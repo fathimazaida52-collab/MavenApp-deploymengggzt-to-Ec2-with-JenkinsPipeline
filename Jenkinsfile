@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         maven 'maven---1'
-        jdk 'kooi'
+        jdk 'kkk'
     }
 
     stages {
@@ -28,10 +28,10 @@ pipeline {
                         echo "Copying artifact to EC2..."
                         scp -o StrictHostKeyChecking=no \
                             target/demo-1.0.0.jar \
-                            ubuntu@54.157.211.71:/opt/app/
+                            ubuntu@34.203.34.29:/opt/app/
 
                         echo "Starting application on EC2..."
-                        ssh -o StrictHostKeyChecking=no ubuntu@54.157.211.71 << 'EOF'
+                        ssh -o StrictHostKeyChecking=no ubuntu@34.203.34.29 << 'EOF'
                             pkill -f demo-1.0.0.jar || true
                             nohup java -jar /opt/app/demo-1.0.0.jar \
                                 > /opt/app/app.log 2>&1 &
